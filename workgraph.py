@@ -2,8 +2,8 @@
 from datetime import datetime
 def parseDateLine(line):
   data = line[2:-1].split(' ')
-  start = datetime(2000+int(data[2][1:]), int(data[1]), int(data[0]), int(data[3]), int(data[4]))
-  end = datetime(2000+int(data[7][1:]), int(data[6]), int(data[5]), int(data[8]), int(data[9]))
+  start = datetime(1900+int(data[2]), int(data[1]), int(data[0]), int(data[3]), int(data[4]))
+  end = datetime(1900+int(data[7]), int(data[6]), int(data[5]), int(data[8]), int(data[9]))
   return {'start': start, 'end': end}
 def parseBreakLine(line):
   data = line[2:-1].split(' ')
