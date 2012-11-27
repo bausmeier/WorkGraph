@@ -19,9 +19,6 @@ f.close()
 # Data points
 plt.plot(keystrokes, 'bo-')
 plt.plot(clicks, 'r--')
-# Avergae keystrokes
-avg=sum(keystrokes)/float(len(keystrokes))
-plt.plot([0, len(days)], [avg, avg], 'g-')
 # Best fit line
 coeff=np.lib.polyfit(range(len(keystrokes)), keystrokes, 1)
 p=np.lib.poly1d(coeff)
