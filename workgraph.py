@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from datetime import date
 import matplotlib.pyplot as plt
+import numpy as np
 keystrokes=[]
 clicks=[]
 days=[]
@@ -15,11 +16,20 @@ for line in f:
     clicks.append(int(line[2:-1].split(' ')[5]))
     keystrokes.append(int(line[2:-1].split(' ')[6]))
 f.close()
+# Data points
 plt.plot(keystrokes,'bo-')
 plt.plot(clicks,'r--')
+# Avergae keystrokes
 avg=sum(keystrokes)/float(len(keystrokes))
 plt.plot([0, len(days)], [avg, avg], 'g-')
 plt.xticks(range(len(days)),days,rotation=45)
+# Best fit line
+coeff=np.lib.polyfit(range(len(keystrokes)), keystrokes, 1)
+p=np.lib.poly1d(coeff)
+x_array=range(len(keystrokes))
+y_array=p(x_array)
+plt.plot(x_array, y_array, 'g--')
+# Labels
 plt.ylabel("Count")
 plt.xlabel("Date")
 plt.legend(("Key presses","Mouse clicks"),"upper right")
