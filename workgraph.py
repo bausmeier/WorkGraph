@@ -8,8 +8,9 @@ f=open('/home/brett/.workrave/historystats', 'r')
 for line in f:
   if line[0]=='m':
     # Ignore 'm ' and '\n'
-    clicks.append(int(line[2:-1].split(' ')[5]))
-    keystrokes.append(int(line[2:-1].split(' ')[6]))
+    data=line[2:-1].split(' ')
+    clicks.append(int(data[5]))
+    keystrokes.append(int(data[6]))
 f.close()
 # Data points
 plt.plot(keystrokes, 'bo-')
